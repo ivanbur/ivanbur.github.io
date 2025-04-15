@@ -1,0 +1,46 @@
+<header>
+	<h1>Auto Vectorization for a C0 Compiler</h1>
+	<p>Iván Burgert (iburgert)</p>
+	<p>ivanbur.github.io/proposal.html</p>
+	<a href="/index.html">Main Page</a>
+</header>
+
+<h2>SUMMARY</h2>
+<p>
+My project is to add auto-vectorization to the C0 compiler that I built for the 15-411 course here at CMU. This project involves doing analysis of a program (particularly loops within the program) and determining whether or not it is possible to vectorize parts of the program (replace normal instructions with SIMD instructions).
+</p>
+
+<h2>BACKGROUND</h2>
+<p>
+Most programmers, when dealing with arrays, write loops that can easily be done using vector instructions, however they may not be aware that these instructions exist, or they may not know how to properly utilize them. The goal of this project is to allow programmers to write loops and programs the way they normally would, but for the compiler to identify areas of the program that can be vectorized, and to perform that vectorization automatically.
+</p>
+
+<h2>THE CHALLENGE</h2>
+<p>
+This problem is challenging because it is very difficult to determine when a program or a loop can be transformed to use vector instructions. The analysis that is required is very complex, and involves doing data dependency and loop analysis, as well as possibly some alias analysis and purity analysis. It can be made even more effective when combined with other optimizations, such as loop invariant code motion, induction variable elimination, constant propagation, copy propagation, and constant folding. The actual transformation of the code into using vector instructions after the analysis has been performed is not incredibly difficult when the code is simple, but it can be difficult when control flow starts to get involved. The more complex the control flow, the more complex the transformation.
+</p>
+
+<h2>RESOURCES</h2>
+<p>
+I will go off my existing code base from the compilers course, which includes a fully correct L4 compiler (an almost complete subset of C0) and implements some optimizations, including copy propagation, constant propagation, constant folding, common subexpression elimination, and dead code elimination. No other special resources are required. I am basing my work off of “Dynamic trace-based analysis of vectorization potential of applications” (https://dl.acm.org/doi/10.1145/2345156.2254108).
+</p>
+
+<h2>GOALS AND DELIVERABLES</h2>
+<p>
+I plan to achieve auto-vectorization for simple loops with no control flow and with loop-independent data dependence. This will involve successfully being able to do analysis to determine whether or not a loop is vectorizable, which is perhaps the hardest part of this project. Successfully transforming the common case of no control flow inside of the loop should be doable once that is achieved. The next goal that I hope to achieve if I have time is being able to handle simple control flow inside of the loop, and following that, more complex control flow inside of the loop. This will be more difficult because the control flow graph inside of the loop will need to be analyzed and “flattened” and turned into masks, because vector instructions work with masks so that the operations only affect the elements that they are intended to.
+</p>
+
+<h2>PLATFORM CHOICE</h2>
+<p>
+My compiler outputs x86-64 machine code, so that is my target platform. This means that my machine code should be able to run on the AFS machines, and I also have a docker container that should be able to run my output assembly.
+</p>
+
+<h2>SCHEDULE</h2>
+<ul>
+	<li>Week of March 31: By the start of this week, I should have read and understood the paper, and have notes in order to implement the analysis pass.</li>
+	<li>Week of April 7: By the start of this week, I should have the beginnings of my analysis implementation and approximately 10-20 tests that all test for various forms of vectorization. Not too much work was done in the previous week because it was carnival.</li>
+	<li>Week of April 14: By the start of this week, I should be done with the analysis and be able to successfully determine whether or not a loop is vectorizable. It should output the correct result for all of my tests. This will be a good milestone for the milestone deadline.</li>
+	<li>Week of April 21: By the start of this week, I should be able to successfully pass some of the test cases, or be done with my implementation and only be fixing bugs.</li>
+	<li>Week of April 28: By the start of this week, I should be done. The final report is due on this day.</li>
+</ul>
+

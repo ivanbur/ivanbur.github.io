@@ -1,0 +1,51 @@
+<header>
+	<h1>Auto Vectorization for a C0 Compiler</h1>
+	<p>Iván Burgert (iburgert)</p>
+	<p>ivanbur.github.io/midpoint.html</p>
+	<a href="/index.html">Main Page</a>
+</header>
+
+<h2>WORK DONE SO FAR</h2>
+<p>
+I have written a lot of test cases. Of course, I can’t write test cases that cover every possibility, but I have written ones that cover a lot. I will add more tests as I think of them. I have also completed some analysis. Currently, I can identify loops and induction variables for these loops. I have started the dependence analysis, but it is not complete. There are some issues, so I will likely scrap it and plan a new one. This means that I did not meet my midpoint goal of successfully being able to identify vectorizable loops :(
+</p>
+
+<h2>GOALS AND DELIVERABLES</h2>
+<p>
+Although I was not able to meet my midpoint goal, I think I will still be able to produce all of my deliverables. I still may be able to achieve one of my “nice to haves”, which is still being able to do autovectorization in the presence of simple control flow. My new list of goals is the same as my previous list of goals, with the removal of the complex control flow “nice to have”.
+</p>
+
+<h2>POSTER SESSION</h2>
+<p>
+At the poster session, I plan to have some graphs and images. The images will show my process of implementation, and the graphs will show the result. They will compare my previous compiler’s output (without autovectorization) and my new compiler’s output (with autovectorization). The comparison will include metrics such as speed and code size for the test cases that I wrote as well as the existing 15-411 test cases.
+</p>
+
+<h2>PRELIMINARY RESULTS</h2>
+<p>
+Not too many preliminary results at this time, just that my compiler successfully identifies all loops and induction variables within the code. It also has not regressed, so it passes all test cases that it passed before (even more, because I fixed some bugs regarding the dynamic semantics).
+</p>
+
+<h2>CONCERNING ISSUES</h2>
+<p>
+No concerning issues at this time.
+</p>
+
+<h2>UPDATED SCHEDULE</h2>
+<ul>
+	<li>Wednesday, April 16: Re-read dependence analysis paper(s) and plan implementation</li>
+	<li>Thursday, April 17: Begin new dependency analysis implementation</li>
+	<li>Friday, April 18: Day off</li>
+	<li>Saturday, April 19: Work on dependency analysis</li>
+	<li>Sunday, April 20: Finish dependency analysis</li>
+	<li>Monday, April 21: Day off (finish dependency analysis if not done by Sunday)</li>
+	<li>Tuesday, April 22: Create types for new vector instructions</li>
+	<li>Wednesday, April 23: Finish vector instruction implementation</li>
+	<li>Thursday, April 24: Write more test cases / iron out bugs</li>
+	<li>Friday, April 25: Write scripts for making graphs</li>
+	<li>Saturday, April 26: Make graphs</li>
+	<li>Sunday, April 27: Write report</li>
+	<li>Monday, April 28: Make poster board</li>
+	<li>Tuesday, April 29: Presentation</li>
+</ul>
+If I finish anything early, I should be able to work on my “nice to have”, which is handling simple control flow.
+
